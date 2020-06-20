@@ -13,19 +13,23 @@ const LightBulbComponent = () => {
 };
 
 const switchesComponent = () => {
+  const switchesNamesRows = `<tr>
+    ${appState.switches
+      .map((switchObj) => `<th>${switchObj.name}</th>`)
+      .join("")}
+  </tr>`;
+
+  const switchesImagesRow = `<tr>
+    ${appState.switches.map(switchImageComponent).join("")}
+  </tr>`;
+
   return `<table class="switches-table">
-    <tr>
-      ${appState.switches
-        .map((switchObj) => `<th>${switchObj.name}</th>`)
-        .join("")}
-    </tr>
-    <tr>
-      ${appState.switches.map(switchComponent).join("")}
-    </tr>
+    ${switchesNamesRows}
+    ${switchesImagesRow}
   </table>`;
 };
 
-const switchComponent = (switchObj) => {
+const switchImageComponent = (switchObj) => {
   const onClickHandlerHtml = `toggleSwitch('${switchObj.name.toLocaleLowerCase()}')`;
 
   const switchImage = switchObj.state
