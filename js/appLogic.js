@@ -6,7 +6,7 @@ const appState = {
   ],
 };
 
-const computeLightState = () => {
+let computeLightState = () => {
   const a = getSwitchState("A");
   const b = getSwitchState("B");
 
