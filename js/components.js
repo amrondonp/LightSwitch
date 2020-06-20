@@ -4,6 +4,16 @@ const LIGHT_OFF_IMAGE_URL = "images/lightOff.png";
 const SWITCH_ON_IMAGE_URL = "images/switchOn.png";
 const SWITCH_OFF_IMAGE_URL = "images/switchOff.png";
 
+const renderUI = () => {
+  document.getElementById("root").innerHTML = rootComponent();
+};
+
+const rootComponent = () => {
+  const light = LightBulbComponent();
+  const switches = switchesComponent();
+  return `${light}${switches}`;
+};
+
 const LightBulbComponent = () => {
   if (appState.isLightOn) {
     return `<img class="bulb-image" src="${LIGHT_ON_IMAGE_URL}">`;

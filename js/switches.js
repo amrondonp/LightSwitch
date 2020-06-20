@@ -11,7 +11,7 @@ const toggleSwitch = (name) => {
 
   computeLightState();
   playAudio();
-  render();
+  renderUI();
 };
 
 const playAudio = () => {
@@ -72,7 +72,7 @@ const setNumberOfSwitches = () => {
   }
 
   newCodeOrSwitchesSet();
-  render();
+  renderUI();
 };
 
 function newCodeOrSwitchesSet() {
@@ -102,19 +102,8 @@ const updateCode = () => {
   const code = document.getElementById("logic").value;
   computeLightState = new Function(code);
   newCodeOrSwitchesSet();
-  render();
+  renderUI();
 };
 
-const App = () => {
-  const light = LightBulbComponent();
-  const switches = switchesComponent();
-  const app = `${light}${switches}`;
-  return app;
-};
-
-const render = () => {
-  document.getElementById("root").innerHTML = App();
-};
-
-render();
+renderUI();
 setLogic();
