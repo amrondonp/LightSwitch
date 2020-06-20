@@ -14,7 +14,7 @@
           <input id="numberOfSwitchesInput" type="text" value="2" />
           <button onclick="setNumberOfSwitches()">Set</button>
         </div>
-        <div id="root" tabindex="0"></div>
+        <div id="root" tabindex="0" style="border: dotted 2px grey;"></div>
       </div>
       <div style="margin-top: 20; margin-left: 50;">
         Current logic
@@ -22,6 +22,34 @@
         <textarea spellcheck="false" id="logic" cols="50" rows="20"> </textarea>
         <br />
         <button onclick="updateCode()">Update code</button>
+      </div>
+      <div style="margin-left: 20;">
+        <h3>Instructions</h3>
+        <ul>
+          <li>
+            <p>
+              Click on the switches to toggle them or click into the dotted box
+              and press keys 'A', 'B', etc to toggle the correspondent switch
+            </p>
+          </li>
+          <li>
+            <p>
+              Use the input box to set any number of switches you want
+            </p>
+          </li>
+          <li>
+            <p>
+              You can change the logic of the light bulb writing code on the
+              text area an clicking 'update code' try it!
+            </p>
+          </li>
+          <li>
+            <p>
+              Try to write the logic such that we have 4 switches and any change
+              to any switch causes the light to toggle
+            </p>
+          </li>
+        </ul>
       </div>
     </div>
     <script src="switches.js"></script>
