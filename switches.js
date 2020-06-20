@@ -1,6 +1,9 @@
 const appState = {
   isLightOn: false,
-  switches: [{name: "A", state: false}],
+  switches: [
+    { name: "A", state: false },
+    { name: "B", state: false },
+  ],
 };
 
 const LightBulbComponent = () => {
@@ -14,7 +17,9 @@ const LightBulbComponent = () => {
 const switchesComponent = () => {
   return `<table style="margin: auto;">
     <tr>
-      ${appState.switches.map((switchObj) => `<th>${switchObj.name}</th>`).join("")}
+      ${appState.switches
+        .map((switchObj) => `<th>${switchObj.name}</th>`)
+        .join("")}
     </tr>
     <tr>
       ${appState.switches.map(switchComponent).join("")}
@@ -26,15 +31,26 @@ const switchComponent = (switchObj, switchNumber) => {
   const switchImage = switchObj.state
     ? `<img src="switchOn.png" width="65" height="100">`
     : `<img src="switchOff.png" width="65" height="100">`;
-  return `<td><div style="padding: 5">${switchImage}</div></td>`;
+  return `<td><div style="padding: 5" onclick="toggleSwitch('${switchObj.name}')">${switchImage}</div></td>`;
+};
+
+const toggleSwitch = (name) => {
+  const switchObj = appState.switches.filter((s) => s.name === name)[0];
+
+  switchObj.state = !switchObj.state;
+
+  render();
 };
 
 const App = () => {
   const light = LightBulbComponent();
   const switches = switchesComponent();
   const app = `${light}${switches}`;
-  console.log(app);
   return app;
 };
 
-document.getElementById("root").innerHTML = App();
+const render = () => {
+  document.getElementById("root").innerHTML = App();
+};
+
+render();
