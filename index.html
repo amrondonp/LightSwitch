@@ -22,7 +22,16 @@
       <div class="logic">
         Current logic
         <br />
-        <textarea spellcheck="false" id="logic" cols="50" rows="20"> </textarea>
+        <textarea spellcheck="false" id="logic" cols="50" rows="20">
+const a = getSwitchState("A");
+const b = getSwitchState("B");
+
+if (xor(a, b)) {
+  turnOn();
+} else {
+  turnOff();
+}
+        </textarea>
         <br />
         <button id="updateCodeButton">
           Update code

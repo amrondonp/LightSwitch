@@ -19,16 +19,4 @@ function newCodeOrSwitchesSet() {
   }
 }
 
-const setLogic = () => {
-  document.getElementById("logic").value = `const a = getSwitchState("A");
-const b = getSwitchState("B");
-
-if (xor(a, b)) {
-  turnOn();
-} else {
-  turnOff();
-}`;
-};
-
 renderUI();
-setLogic();
