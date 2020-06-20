@@ -29,7 +29,7 @@ const setNumberOfSwitches = () => {
 
 const updateCode = () => {
   const code = document.getElementById("logic").value;
-  computeLightState = new Function(code);
+  updateLogic(code);
   newCodeOrSwitchesSet();
   renderUI();
 };

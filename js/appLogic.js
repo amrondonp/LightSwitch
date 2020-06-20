@@ -28,6 +28,10 @@ const toggleSwitch = (switchName) => {
   computeLightState();
 };
 
+const updateLogic = (code) => {
+  computeLightState = new Function(code);
+};
+
 const xor = (a, b) => {
   return Boolean(a ^ b);
 };
