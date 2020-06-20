@@ -1,13 +1,19 @@
+const LIGHT_ON_IMAGE_URL = "images/lightOn.png";
+const LIGHT_OFF_IMAGE_URL = "images/lightOff.png";
+
+const SWITCH_ON_IMAGE_URL = "images/switchOn.png";
+const SWITCH_OFF_IMAGE_URL = "images/switchOff.png";
+
 const LightBulbComponent = () => {
   if (appState.isLightOn) {
-    return `<img src="images/lightOn.png" width="200" height="300">`;
+    return `<img src="${LIGHT_ON_IMAGE_URL}" width="200" height="300">`;
   } else {
-    return `<img src="images/lightOff.png" width="200" height="300">`;
+    return `<img src="${LIGHT_OFF_IMAGE_URL}" width="200" height="300">`;
   }
 };
 
 const switchesComponent = () => {
-  return `<table style="margin: auto;">
+  return `<table class="switches-table">
     <tr>
       ${appState.switches
         .map((switchObj) => `<th>${switchObj.name}</th>`)
@@ -20,8 +26,11 @@ const switchesComponent = () => {
 };
 
 const switchComponent = (switchObj, switchNumber) => {
+  const onClickHandlerHtml = `toggleSwitch('${switchObj.name.toLocaleLowerCase()}')`;
+
   const switchImage = switchObj.state
-    ? `<img src="images/switchOn.png" width="65" height="100" onclick="toggleSwitch('${switchObj.name.toLocaleLowerCase()}')">`
-    : `<img src="images/switchOff.png" width="65" height="100" onclick="toggleSwitch('${switchObj.name.toLocaleLowerCase()}')">`;
-  return `<td><div style="padding: 5">${switchImage}</div></td>`;
+    ? `<img src="${SWITCH_ON_IMAGE_URL}" width="65" height="100" onclick="${onClickHandlerHtml}">`
+    : `<img src="${SWITCH_OFF_IMAGE_URL}" width="65" height="100" onclick="${onClickHandlerHtml}">`;
+
+  return `<td><div class="switch">${switchImage}</div></td>`;
 };

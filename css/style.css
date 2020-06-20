@@ -29,3 +29,11 @@ body {
   margin-top: 20;
   margin-left: 50;
 }
+
+.switch {
+  padding: 5;
+}
+
+.switches-table {
+  margin: auto;
+}
