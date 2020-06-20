@@ -4,6 +4,15 @@ const toggleSwitchWithAudioAndRendering = (name) => {
   renderUI();
 };
 
+const playAudio = () => {
+  const audio = document.getElementById("toggleSound");
+  audio.play();
+  setTimeout(() => {
+    audio.pause();
+    audio.currentTime = 0;
+  }, 150);
+};
+
 const setNumberOfSwitches = () => {
   const numberOfSwitches = parseInt(
     document.getElementById("numberOfSwitchesInput").value

@@ -32,7 +32,7 @@ const updateLogic = (code) => {
   computeLightState = new Function(code);
   try {
     computeLightState();
-    alert("The new logic executed successfully");
+    alert("The new logic changed successfully");
   } catch (error) {
     alert(
       "Error, please make sure your logic is correct you have the following error in your function " +
