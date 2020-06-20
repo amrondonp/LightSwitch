@@ -1,29 +1,30 @@
 <html>
   <head>
     <title>Switches</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
   </head>
-  <body style="font-family: Arial, Helvetica, sans-serif;">
+  <body>
     <audio id="toggleSound">
       <source src="sound.mp3" type="audio/mpeg" />
       Your browser does not support the audio element.
     </audio>
-    <div style="flex: 1; display: flex; flex-direction: row;">
-      <div style="text-align: center;">
-        <div style="margin-bottom: 30; margin-top: 20;">
+    <div class="main-content">
+      <div class="centered-content">
+        <div class="switch-number">
           How many switches you want?
           <input id="numberOfSwitchesInput" type="text" value="2" />
           <button onclick="setNumberOfSwitches()">Set</button>
         </div>
-        <div id="root" tabindex="0" style="border: dotted 2px grey;"></div>
+        <div id="root" class="root" tabindex="0"></div>
       </div>
-      <div style="margin-top: 20; margin-left: 50;">
+      <div class="logic">
         Current logic
         <br />
         <textarea spellcheck="false" id="logic" cols="50" rows="20"> </textarea>
         <br />
         <button onclick="updateCode()">Update code</button>
       </div>
-      <div style="margin-left: 20;">
+      <div class="instructions">
         <h3>Instructions</h3>
         <ul>
           <li>
