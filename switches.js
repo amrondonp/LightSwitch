@@ -101,7 +101,15 @@ const setNumberOfSwitches = () => {
   }
 
   console.log(appState);
-  computeLightState();
+  try {
+    computeLightState();
+  } catch (error) {
+    alert(
+      "Error, please make sure your light routine is correct you have an error in your function" +
+        error
+    );
+  }
+
   render();
 };
 
