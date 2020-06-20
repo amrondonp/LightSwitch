@@ -31,9 +31,9 @@ const switchesComponent = () => {
 
 const switchComponent = (switchObj, switchNumber) => {
   const switchImage = switchObj.state
-    ? `<img src="switchOn.png" width="65" height="100">`
-    : `<img src="switchOff.png" width="65" height="100">`;
-  return `<td><div style="padding: 5" onclick="toggleSwitch('${switchObj.name}')">${switchImage}</div></td>`;
+    ? `<img src="switchOn.png" width="65" height="100" onclick="toggleSwitch('${switchObj.name.toLocaleLowerCase()}')">`
+    : `<img src="switchOff.png" width="65" height="100" onclick="toggleSwitch('${switchObj.name.toLocaleLowerCase()}')">`;
+  return `<td><div style="padding: 5">${switchImage}</div></td>`;
 };
 
 const toggleSwitch = (name) => {
