@@ -2,7 +2,9 @@ const appState = {
   isLightOn: false,
   switches: [
     { name: "A", state: false },
-    // { name: "B", state: false },
+    { name: "B", state: false },
+    //{ name: "C", state: false },
+    //{ name: "D", state: false },
   ],
 };
 
@@ -42,10 +44,15 @@ const toggleSwitch = (name) => {
   render();
 };
 
+const xor = (a, b) => {
+  return Boolean(a ^ b);
+}
+
 const computeLightState = () => {
   const a = appState.switches[0].state;
+  const b = appState.switches[1].state;
 
-  if(a) {
+  if(xor(a, b)) {
     appState.isLightOn = true;
   } else {
     appState.isLightOn = false;
