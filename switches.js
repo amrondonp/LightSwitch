@@ -64,15 +64,29 @@ const xor = (a, b) => {
 };
 
 function computeLightState() {
-  const a = appState.switches[0].state;
-  const b = appState.switches[1].state;
+  const a = getSwitchState("A");
+  const b = getSwitchState("B");
 
   if (xor(a, b)) {
-    appState.isLightOn = true;
+    turnOn();
   } else {
-    appState.isLightOn = false;
+    turnOff();
   }
 }
+
+const getSwitchState = (name) => {
+  return appState.switches.filter(
+    (s) => s.name.toLocaleLowerCase() === name.toLocaleLowerCase()
+  )[0].state;
+};
+
+const turnOn = () => {
+  appState.isLightOn = true;
+};
+
+const turnOff = () => {
+  appState.isLightOn = false;
+};
 
 document.getElementById("root").addEventListener("keydown", function (event) {
   const name = event.key.toLocaleLowerCase();
@@ -115,15 +129,13 @@ function newCodeOrSwitchesSet() {
 }
 
 const setLogic = () => {
-  document.getElementById(
-    "logic"
-  ).value = `const a = appState.switches[0].state;
-const b = appState.switches[1].state;
+  document.getElementById("logic").value = `const a = getSwitchState("A");
+const b = getSwitchState("B");
 
 if (xor(a, b)) {
-  appState.isLightOn = true;
+  turnOn();
 } else {
-  appState.isLightOn = false;
+  turnOff();
 }`;
 };
 
