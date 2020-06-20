@@ -41,8 +41,18 @@ const toggleSwitch = (name) => {
   switchObj.state = !switchObj.state;
 
   computeLightState();
+  playAudio();
   render();
 };
+
+const playAudio = () => {
+  const audio = document.getElementById("toggleSound");
+  audio.play();
+  setTimeout(() => {
+    audio.pause();
+    audio.currentTime = 0;
+  }, 150)
+}
 
 const xor = (a, b) => {
   return Boolean(a ^ b);
