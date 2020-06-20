@@ -2,13 +2,13 @@ const appState = {
   isLightOn: false,
   switches: [
     { name: "A", state: false },
-    { name: "B", state: false },
+    // { name: "B", state: false },
   ],
 };
 
 const LightBulbComponent = () => {
   if (appState.isLightOn) {
-    return `<img src="lightOn.png" width="230" height="300">`;
+    return `<img src="lightOn.png" width="200" height="300">`;
   } else {
     return `<img src="lightOff.png" width="200" height="300">`;
   }
@@ -36,11 +36,21 @@ const switchComponent = (switchObj, switchNumber) => {
 
 const toggleSwitch = (name) => {
   const switchObj = appState.switches.filter((s) => s.name === name)[0];
-
   switchObj.state = !switchObj.state;
 
+  computeLightState();
   render();
 };
+
+const computeLightState = () => {
+  const a = appState.switches[0].state;
+
+  if(a) {
+    appState.isLightOn = true;
+  } else {
+    appState.isLightOn = false;
+  }
+}
 
 const App = () => {
   const light = LightBulbComponent();
