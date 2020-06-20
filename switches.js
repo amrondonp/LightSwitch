@@ -1,6 +1,6 @@
 const appState = {
   isLightOn: false,
-  switches: [{name: "A", state: "false"}],
+  switches: [{name: "A", state: false}],
 };
 
 const LightBulbComponent = () => {
