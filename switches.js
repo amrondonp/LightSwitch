@@ -100,21 +100,41 @@ const setNumberOfSwitches = () => {
     });
   }
 
-  console.log(appState);
+  newCodeOrSwitchesSet();
+  render();
+};
+
+function newCodeOrSwitchesSet() {
   try {
     computeLightState();
+    alert("code changed successfully");
   } catch (error) {
     alert(
       "Error, please make sure your light routine is correct you have an error in your function" +
         error
     );
   }
-
-  render();
-};
+}
 
 const setLogic = () => {
-  document.getElementById("logic").value = computeLightState.toString();
+  document.getElementById(
+    "logic"
+  ).value = `const a = appState.switches[0].state;
+const b = appState.switches[1].state;
+
+if (xor(a, b)) {
+  appState.isLightOn = true;
+} else {
+  appState.isLightOn = false;
+}`;
+};
+
+const updateCode = () => {
+  const code = document.getElementById("logic").value;
+  computeLightState = new Function(code);
+  console.log(computeLightState.toString());
+  newCodeOrSwitchesSet();
+  render();
 };
 
 const App = () => {
