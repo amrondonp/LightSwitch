@@ -1,7 +1,5 @@
 const toggleSwitch = (name) => {
-  const switchObj = appState.switches.filter(
-    (s) => s.name.toLocaleLowerCase() === name
-  )[0];
+  const switchObj = findSwitchByName(name);
 
   if (!switchObj) {
     return;

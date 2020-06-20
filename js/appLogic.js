@@ -22,9 +22,7 @@ const xor = (a, b) => {
 };
 
 const getSwitchState = (name) => {
-  return appState.switches.filter(
-    (s) => s.name.toLocaleLowerCase() === name.toLocaleLowerCase()
-  )[0].state;
+  return findSwitchByName(name).state;
 };
 
 const turnOn = () => {
@@ -33,4 +31,10 @@ const turnOn = () => {
 
 const turnOff = () => {
   appState.isLightOn = false;
+};
+
+const findSwitchByName = (name) => {
+  return appState.switches.filter(
+    (s) => s.name.toLocaleLowerCase() === name.toLocaleLowerCase()
+  )[0];
 };
