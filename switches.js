@@ -37,7 +37,9 @@ const switchComponent = (switchObj, switchNumber) => {
 };
 
 const toggleSwitch = (name) => {
-  const switchObj = appState.switches.filter((s) => s.name === name)[0];
+  const switchObj = appState.switches.filter(
+    (s) => s.name.toLocaleLowerCase() === name
+  )[0];
   switchObj.state = !switchObj.state;
 
   computeLightState();
@@ -51,23 +53,28 @@ const playAudio = () => {
   setTimeout(() => {
     audio.pause();
     audio.currentTime = 0;
-  }, 150)
-}
+  }, 150);
+};
 
 const xor = (a, b) => {
   return Boolean(a ^ b);
-}
+};
 
 const computeLightState = () => {
   const a = appState.switches[0].state;
   const b = appState.switches[1].state;
 
-  if(xor(a, b)) {
+  if (xor(a, b)) {
     appState.isLightOn = true;
   } else {
     appState.isLightOn = false;
   }
-}
+};
+
+document.addEventListener("keydown", function (event) {
+  const name = event.key.toLocaleLowerCase();
+  toggleSwitch(name);
+});
 
 const App = () => {
   const light = LightBulbComponent();
