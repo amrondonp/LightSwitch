@@ -6,9 +6,9 @@ const SWITCH_OFF_IMAGE_URL = "images/switchOff.png";
 
 const LightBulbComponent = () => {
   if (appState.isLightOn) {
-    return `<img src="${LIGHT_ON_IMAGE_URL}" width="200" height="300">`;
+    return `<img class="bulb-image" src="${LIGHT_ON_IMAGE_URL}">`;
   } else {
-    return `<img src="${LIGHT_OFF_IMAGE_URL}" width="200" height="300">`;
+    return `<img class="bulb-image" src="${LIGHT_OFF_IMAGE_URL}">`;
   }
 };
 
@@ -25,12 +25,12 @@ const switchesComponent = () => {
   </table>`;
 };
 
-const switchComponent = (switchObj, switchNumber) => {
+const switchComponent = (switchObj) => {
   const onClickHandlerHtml = `toggleSwitch('${switchObj.name.toLocaleLowerCase()}')`;
 
   const switchImage = switchObj.state
-    ? `<img src="${SWITCH_ON_IMAGE_URL}" width="65" height="100" onclick="${onClickHandlerHtml}">`
-    : `<img src="${SWITCH_OFF_IMAGE_URL}" width="65" height="100" onclick="${onClickHandlerHtml}">`;
+    ? `<img class="switch-image" src="${SWITCH_ON_IMAGE_URL}" onclick="${onClickHandlerHtml}">`
+    : `<img class="switch-image" src="${SWITCH_OFF_IMAGE_URL}" onclick="${onClickHandlerHtml}">`;
 
   return `<td><div class="switch">${switchImage}</div></td>`;
 };

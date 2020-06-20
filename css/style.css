@@ -30,10 +30,20 @@ body {
   margin-left: 50;
 }
 
+.bulb-image {
+  width: 200;
+  height: 300;
+}
+
 .switch {
   padding: 5;
 }
 
 .switches-table {
   margin: auto;
+}
+
+.switch-image {
+  width: 65;
+  height: 100;
 }
