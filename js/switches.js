@@ -8,9 +8,9 @@ const appState = {
 
 const LightBulbComponent = () => {
   if (appState.isLightOn) {
-    return `<img src="lightOn.png" width="200" height="300">`;
+    return `<img src="images/lightOn.png" width="200" height="300">`;
   } else {
-    return `<img src="lightOff.png" width="200" height="300">`;
+    return `<img src="images/lightOff.png" width="200" height="300">`;
   }
 };
 
@@ -29,8 +29,8 @@ const switchesComponent = () => {
 
 const switchComponent = (switchObj, switchNumber) => {
   const switchImage = switchObj.state
-    ? `<img src="switchOn.png" width="65" height="100" onclick="toggleSwitch('${switchObj.name.toLocaleLowerCase()}')">`
-    : `<img src="switchOff.png" width="65" height="100" onclick="toggleSwitch('${switchObj.name.toLocaleLowerCase()}')">`;
+    ? `<img src="images/switchOn.png" width="65" height="100" onclick="toggleSwitch('${switchObj.name.toLocaleLowerCase()}')">`
+    : `<img src="images/switchOff.png" width="65" height="100" onclick="toggleSwitch('${switchObj.name.toLocaleLowerCase()}')">`;
   return `<td><div style="padding: 5">${switchImage}</div></td>`;
 };
 
