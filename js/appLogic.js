@@ -30,6 +30,36 @@ const toggleSwitch = (switchName) => {
 
 const updateLogic = (code) => {
   computeLightState = new Function(code);
+  try {
+    computeLightState();
+    alert("The new logic executed successfully");
+  } catch (error) {
+    alert(
+      "Error, please make sure your logic is correct you have the following error in your function " +
+        error
+    );
+  }
+};
+
+const updateTheNumberOfSwitches = (numberOfSwitches) => {
+  appState.switches = [];
+
+  for (let i = 0; i < numberOfSwitches; i++) {
+    appState.switches.push({
+      state: false,
+      name: String.fromCharCode(65 + i),
+    });
+  }
+
+  try {
+    computeLightState();
+    alert("Changed the number switches successfully");
+  } catch (error) {
+    alert(
+      "Error in the logic, this may be caused because the logic is referencing a switch that no longer exists " +
+        error
+    );
+  }
 };
 
 const xor = (a, b) => {

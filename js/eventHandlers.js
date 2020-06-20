@@ -14,23 +14,13 @@ const setNumberOfSwitches = () => {
     return;
   }
 
-  appState.switches = [];
-
-  for (let i = 0; i < numberOfSwitches; i++) {
-    appState.switches.push({
-      state: false,
-      name: String.fromCharCode(65 + i),
-    });
-  }
-
-  newCodeOrSwitchesSet();
+  updateTheNumberOfSwitches(numberOfSwitches);
   renderUI();
 };
 
 const updateCode = () => {
   const code = document.getElementById("logic").value;
   updateLogic(code);
-  newCodeOrSwitchesSet();
   renderUI();
 };
 
