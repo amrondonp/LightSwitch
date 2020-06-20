@@ -3,8 +3,6 @@ const appState = {
   switches: [
     { name: "A", state: false },
     { name: "B", state: false },
-    //{ name: "C", state: false },
-    //{ name: "D", state: false },
   ],
 };
 
@@ -76,7 +74,7 @@ function computeLightState() {
   }
 }
 
-document.addEventListener("keydown", function (event) {
+document.getElementById("root").addEventListener("keydown", function (event) {
   const name = event.key.toLocaleLowerCase();
   toggleSwitch(name);
 });
@@ -132,7 +130,6 @@ if (xor(a, b)) {
 const updateCode = () => {
   const code = document.getElementById("logic").value;
   computeLightState = new Function(code);
-  console.log(computeLightState.toString());
   newCodeOrSwitchesSet();
   render();
 };
