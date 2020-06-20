@@ -2,12 +2,25 @@
   <head>
     <title>Switches</title>
   </head>
-  <body>
+  <body style="font-family: Arial, Helvetica, sans-serif;">
     <audio id="toggleSound">
       <source src="sound.mp3" type="audio/mpeg">
       Your browser does not support the audio element.
     </audio>
-    <div id="root" style="text-align: center;">
+    <div style="text-align: center;">
+      <div style="margin-bottom: 30; margin-top: 20;">
+        How many switches you want?
+        <input id="numberOfSwitchesInput" type="text" value="2">
+        <button onclick="setNumberOfSwitches()">Set</button>
+      </div>
+      <div id="root">
+      </div>
+    </div>
+    <div style="margin-top: 20;">
+      Current logic
+      <br>
+        <textarea spellcheck="false" id="logic" cols="50" rows="10">
+        </textarea>
     </div>
     <script src="switches.js"></script>
   </body>

@@ -40,6 +40,11 @@ const toggleSwitch = (name) => {
   const switchObj = appState.switches.filter(
     (s) => s.name.toLocaleLowerCase() === name
   )[0];
+
+  if (!switchObj) {
+    return;
+  }
+
   switchObj.state = !switchObj.state;
 
   computeLightState();
@@ -60,7 +65,7 @@ const xor = (a, b) => {
   return Boolean(a ^ b);
 };
 
-const computeLightState = () => {
+function computeLightState() {
   const a = appState.switches[0].state;
   const b = appState.switches[1].state;
 
@@ -69,12 +74,40 @@ const computeLightState = () => {
   } else {
     appState.isLightOn = false;
   }
-};
+}
 
 document.addEventListener("keydown", function (event) {
   const name = event.key.toLocaleLowerCase();
   toggleSwitch(name);
 });
+
+const setNumberOfSwitches = () => {
+  const numberOfSwitches = parseInt(
+    document.getElementById("numberOfSwitchesInput").value
+  );
+
+  if (isNaN(numberOfSwitches) || numberOfSwitches <= 0) {
+    alert("Please enter a number > 0");
+    return;
+  }
+
+  appState.switches = [];
+
+  for (let i = 0; i < numberOfSwitches; i++) {
+    appState.switches.push({
+      state: false,
+      name: String.fromCharCode(65 + i),
+    });
+  }
+
+  console.log(appState);
+  computeLightState();
+  render();
+};
+
+const setLogic = () => {
+  document.getElementById("logic").value = computeLightState.toString();
+};
 
 const App = () => {
   const light = LightBulbComponent();
@@ -88,3 +121,4 @@ const render = () => {
 };
 
 render();
+setLogic();
