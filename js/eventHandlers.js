@@ -1,13 +1,5 @@
-const toggleSwitch = (name) => {
-  const switchObj = findSwitchByName(name);
-
-  if (!switchObj) {
-    return;
-  }
-
-  switchObj.state = !switchObj.state;
-
-  computeLightState();
+const toggleSwitchWithAudioAndRendering = (name) => {
+  toggleSwitch(name);
   playAudio();
   renderUI();
 };
@@ -52,5 +44,5 @@ document
 
 document.getElementById("root").addEventListener("keydown", (event) => {
   const name = event.key.toLocaleLowerCase();
-  toggleSwitch(name);
+  toggleSwitchWithAudioAndRendering(name);
 });

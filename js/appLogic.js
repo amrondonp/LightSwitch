@@ -17,6 +17,17 @@ const computeLightState = () => {
   }
 };
 
+const toggleSwitch = (switchName) => {
+  const switchObj = findSwitchByName(switchName);
+
+  if (!switchObj) {
+    return;
+  }
+
+  switchObj.state = !switchObj.state;
+  computeLightState();
+};
+
 const xor = (a, b) => {
   return Boolean(a ^ b);
 };
